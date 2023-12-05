@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"slices"
+	"math"
 	"strconv"
 	"strings"
 
@@ -138,7 +138,7 @@ func mappingToFunc(mapping RawMapping) func(int) (int, bool) {
 
 func Part1() int {
 	mappings := parseInput(INPUT)
-	locations := []int{}
+	minLocation := math.Inf(1)
 
 	for _, seed := range mappings.seeds {
 		soil := seed
@@ -190,17 +190,17 @@ func Part1() int {
 				break
 			}
 		}
-		locations = append(locations, location)
+		minLocation = math.Min(minLocation, float64(location))
 	}
 
-	return slices.Min(locations)
+	return int(minLocation)
 }
 
-func Part2() int {
-	return 0
-}
+// func Part2() int {
+// 	return 0
+// }
 
 func main() {
-	fmt.Println("[Part 1]", Part1(), 35)
-	fmt.Println("[Part 2]", Part2(), -1)
+	fmt.Println("[Part 1]", Part1() == 111627841)
+	// fmt.Println("[Part 2]", Part2(), -1)
 }
