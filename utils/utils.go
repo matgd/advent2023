@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 )
 
@@ -49,4 +50,12 @@ func LinesFromShell(shellCommand string) []string {
 
 	split := strings.Split(stdout.String(), "\n")
 	return split[:len(split)-1]
+}
+
+func ToInt(str string) int {
+	converted, err := strconv.Atoi(str)
+	if err != nil {
+		log.Fatalf("Couldn't convert '%s' to int due to error: %s\n", str, err)
+	}
+	return converted
 }
