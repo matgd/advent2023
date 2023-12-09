@@ -7,7 +7,7 @@ import (
 	"matgd.github.com/advent2023/utils"
 )
 
-const INPUT = "tinput.txt"
+const INPUT = "input.txt"
 
 type Cycle struct {
 	indexQ      []int
@@ -89,7 +89,11 @@ func solve2() []int {
 			} else {
 				allTrue = true
 				minStepsToFind[i] = steps[i]
-				fmt.Println(minStepsToFind)
+				if i == 2 {
+					fmt.Println(nextKeys)
+					fmt.Println(minStepsToFind)
+
+				}
 				steps[i] = 0
 			}
 		}
